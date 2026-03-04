@@ -1,409 +1,475 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeBeat | Welcome</title>
-    
-    <!-- Frameworks -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        :root {
-            --obsidian: #000000;
-            --accent: #d4a4a4;
-            --surface: #0a0a0a;
-            --card-bg: #111111;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { background-color: var(--obsidian); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* --- SLIM PERSISTENT NAVBAR --- */
-        /* --- SLIM PERSISTENT NAVBAR --- */
-        .navbar-sb { 
-            background: rgba(0,0,0,0.9); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--border); 
-            padding: 8px 0; /* Slimmer padding */
-            transition: 0.4s; 
-            z-index: 3000; 
-        }
-        .navbar-brand { font-weight: 800; letter-spacing: 3px; color: var(--accent) !important; font-size: 0.9rem; cursor: pointer; }
-        .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- CONSOLE VIEW / TABS --- */
-        #sb-console { display: none; min-height: 100vh; background: #050505; padding-top: 55px; }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SafeBeat | Welcome</title>
         
-        /* PC/Desktop: Vertical Sidebar */
-        .sidebar { 
-            width: 260px; 
-            background: #000; 
-            border-right: 1px solid var(--border); 
-            height: calc(100vh - 55px); 
-            position: fixed; 
-            padding: 30px 15px; 
-            z-index: 1010; 
-            display: flex;
-            flex-direction: column;
-        }
-        .main-workspace { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-        .side-item { color: #555; text-decoration: none; padding: 12px 15px; display: flex; align-items: center; font-weight: 600; border-radius: 12px; margin-bottom: 5px; transition: 0.3s; text-transform: uppercase; font-size: 0.75rem; }
-        .side-item i { margin-right: 12px; font-size: 1.1rem; }
-        .side-item.active { background: rgba(212, 164, 164, 0.1); color: var(--accent); }
-
-        /* Mobile: Horizontal Bottom Dock */
-        @media (max-width: 991px) {
-            .sidebar {
-                width: 100% !important;
-                height: 70px !important;
-                bottom: 0 !important;
-                left: 0 !important;
-                top: auto !important;
-                flex-direction: row !important;
-                justify-content: space-around !important;
-                align-items: center !important;
-                border-right: none !important;
-                border-top: 1px solid var(--border) !important;
-                padding: 0 10px !important;
-                background: rgba(10, 10, 10, 0.98) !important;
-                backdrop-filter: blur(15px);
+        <!-- Frameworks -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            :root {
+                --obsidian: #000000;
+                --accent: #d4a4a4;
+                --surface: #0a0a0a;
+                --card-bg: #111111;
+                --border: rgba(255, 255, 255, 0.1);
             }
-            .sidebar .label-accent { display: none; }
-            .sidebar nav { display: flex !important; flex-direction: row !important; width: 100%; justify-content: space-around; }
-            .side-item { flex-direction: column; padding: 5px !important; margin: 0 !important; font-size: 0.6rem !important; }
-            .side-item i { margin: 0 0 3px 0 !important; font-size: 1.3rem !important; }
-            .main-workspace { margin-left: 0 !important; width: 100% !important; padding: 40px 20px 100px 20px !important; }
-            .navbar-toggler { border: none !important; }
-            .navbar-toggler-icon { filter: invert(1); scale: 0.8; }
+
+            body { background-color: var(--obsidian); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+            /* --- SLIM PERSISTENT NAVBAR --- */
+            /* --- SLIM PERSISTENT NAVBAR --- */
+            .navbar-sb { 
+                background: rgba(0,0,0,0.9); 
+                backdrop-filter: blur(15px); 
+                border-bottom: 1px solid var(--border); 
+                padding: 8px 0; /* Slimmer padding */
+                transition: 0.4s; 
+                z-index: 3000; 
+            }
+            .navbar-brand { font-weight: 800; letter-spacing: 3px; color: var(--accent) !important; font-size: 0.9rem; cursor: pointer; }
+            .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+            /* --- CONSOLE VIEW / TABS --- */
+            #sb-console { display: none; min-height: 100vh; background: #050505; padding-top: 55px; }
+            
+            /* PC/Desktop: Vertical Sidebar */
+            .sidebar { 
+                width: 260px; 
+                background: #000; 
+                border-right: 1px solid var(--border); 
+                height: calc(100vh - 55px); 
+                position: fixed; 
+                padding: 30px 15px; 
+                z-index: 1010; 
+                display: flex;
+                flex-direction: column;
+            }
+            .main-workspace { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+            .side-item { color: #555; text-decoration: none; padding: 12px 15px; display: flex; align-items: center; font-weight: 600; border-radius: 12px; margin-bottom: 5px; transition: 0.3s; text-transform: uppercase; font-size: 0.75rem; }
+            .side-item i { margin-right: 12px; font-size: 1.1rem; }
+            .side-item.active { background: rgba(212, 164, 164, 0.1); color: var(--accent); }
+
+            /* Mobile: Horizontal Bottom Dock */
+            @media (max-width: 991px) {
+                .sidebar {
+                    width: 100% !important;
+                    height: 70px !important;
+                    bottom: 0 !important;
+                    left: 0 !important;
+                    top: auto !important;
+                    flex-direction: row !important;
+                    justify-content: space-around !important;
+                    align-items: center !important;
+                    border-right: none !important;
+                    border-top: 1px solid var(--border) !important;
+                    padding: 0 10px !important;
+                    background: rgba(10, 10, 10, 0.98) !important;
+                    backdrop-filter: blur(15px);
+                }
+                .sidebar .label-accent { display: none; }
+                .sidebar nav { display: flex !important; flex-direction: row !important; width: 100%; justify-content: space-around; }
+                .side-item { flex-direction: column; padding: 5px !important; margin: 0 !important; font-size: 0.6rem !important; }
+                .side-item i { margin: 0 0 3px 0 !important; font-size: 1.3rem !important; }
+                .main-workspace { margin-left: 0 !important; width: 100% !important; padding: 40px 20px 100px 20px !important; }
+                .navbar-toggler { border: none !important; }
+                .navbar-toggler-icon { filter: invert(1); scale: 0.8; }
+            }
+            .navbar-brand { font-weight: 800; letter-spacing: 3px; color: var(--accent) !important; font-size: 1rem; cursor: pointer; }
+            .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+            .nav-link:hover { color: var(--accent) !important; }
+
+            /* --- HERO --- */
+            .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); }
+            .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; letter-spacing: -3px; margin-bottom: 20px; }
+            .btn-sb-primary { background: var(--accent); color: black; font-weight: 700; padding: 12px 30px; border-radius: 4px; border: none; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; font-size: 0.7rem; }
+            .btn-sb-primary:hover { background: white; transform: translateY(-2px); }
+
+            /* --- SECTIONS --- */
+            .section-padding { padding: 100px 0; }
+            .label-accent { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
+            .img-placeholder { border-radius: 30px; border: 1px solid var(--border); background: #080808; overflow: hidden; aspect-ratio: 16/9; }
+            .elite-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 40px; height: 100%; transition: 0.3s; }
+            .elite-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+            /* --- CONSOLE VIEW --- */
+            #sb-console { display: none; min-height: 100vh; background: #050505; padding-top: 60px; }
+            .sidebar { width: 260px; background: #000; border-right: 1px solid var(--border); height: calc(100vh - 60px); position: fixed; padding: 40px 20px; z-index: 1010; }
+            .main-workspace { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+            
+            .side-item { color: #555; text-decoration: none; padding: 12px 15px; display: flex; align-items: center; font-weight: 600; border-radius: 12px; margin-bottom: 8px; transition: 0.3s; text-transform: uppercase; font-size: 0.75rem; }
+            .side-item i { margin-right: 12px; font-size: 1.1rem; }
+            .side-item.active { background: rgba(212, 164, 164, 0.1); color: var(--accent); }
+            .side-item:hover:not(.active) { color: white; }
+            
+            .monitor-card { background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); padding: 30px; }
+            .chart-frame { background: #000; border-radius: 20px; height: 350px; border: 1px solid var(--border); padding: 20px; position: relative; }
+            .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin-top: 20px; }
+
+            /* --- FOOTER --- */
+            footer { border-top: 1px solid var(--border); padding: 60px 0; background: #020202; }
+            .social-link { color: white; opacity: 0.5; font-size: 1.5rem; margin-right: 20px; transition: 0.3s; text-decoration: none; }
+            .social-link:hover { opacity: 1; color: var(--accent); }
+            /* --- MOBILE RESPONSIVE OVERRIDES --- */
+    @media (max-width: 991px) {
+        /* 1. Navbar Toggler Style */
+        .navbar-toggler { border: none !important; padding: 0; }
+        .navbar-toggler:focus { box-shadow: none; }
+        .navbar-toggler-icon {
+            filter: invert(78%) sepia(13%) saturate(651%) hue-rotate(314deg) brightness(93%) contrast(85%);
         }
-        .navbar-brand { font-weight: 800; letter-spacing: 3px; color: var(--accent) !important; font-size: 1rem; cursor: pointer; }
-        .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-link:hover { color: var(--accent) !important; }
 
-        /* --- HERO --- */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; letter-spacing: -3px; margin-bottom: 20px; }
-        .btn-sb-primary { background: var(--accent); color: black; font-weight: 700; padding: 12px 30px; border-radius: 4px; border: none; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; font-size: 0.7rem; }
-        .btn-sb-primary:hover { background: white; transform: translateY(-2px); }
+        /* 2. Sidebar to Horizontal Dock */
+        .sidebar {
+            width: 100% !important;
+            height: 75px !important;
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            top: auto !important;
+            flex-direction: row !important;
+            justify-content: space-around !important;
+            align-items: center !important;
+            border-right: none !important;
+            border-top: 1px solid var(--border) !important;
+            background: rgba(10, 10, 10, 0.98) !important;
+            backdrop-filter: blur(15px);
+            padding: 0 10px !important;
+            z-index: 2500;
+        }
 
-        /* --- SECTIONS --- */
-        .section-padding { padding: 100px 0; }
-        .label-accent { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .img-placeholder { border-radius: 30px; border: 1px solid var(--border); background: #080808; overflow: hidden; aspect-ratio: 16/9; }
-        .elite-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 40px; height: 100%; transition: 0.3s; }
-        .elite-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        /* Hide the 'Terminal' text label on mobile */
+        .sidebar .label-accent { display: none; }
 
-        /* --- CONSOLE VIEW --- */
-        #sb-console { display: none; min-height: 100vh; background: #050505; padding-top: 60px; }
-        .sidebar { width: 260px; background: #000; border-right: 1px solid var(--border); height: calc(100vh - 60px); position: fixed; padding: 40px 20px; z-index: 1010; }
-        .main-workspace { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-        
-        .side-item { color: #555; text-decoration: none; padding: 12px 15px; display: flex; align-items: center; font-weight: 600; border-radius: 12px; margin-bottom: 8px; transition: 0.3s; text-transform: uppercase; font-size: 0.75rem; }
-        .side-item i { margin-right: 12px; font-size: 1.1rem; }
-        .side-item.active { background: rgba(212, 164, 164, 0.1); color: var(--accent); }
-        .side-item:hover:not(.active) { color: white; }
-        
-        .monitor-card { background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); padding: 30px; }
-        .chart-frame { background: #000; border-radius: 20px; height: 350px; border: 1px solid var(--border); padding: 20px; position: relative; }
-        .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin-top: 20px; }
+        /* Icons side-by-side */
+        .sidebar nav {
+            display: flex !important;
+            flex-direction: row !important;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
 
-        /* --- FOOTER --- */
-        footer { border-top: 1px solid var(--border); padding: 60px 0; background: #020202; }
-        .social-link { color: white; opacity: 0.5; font-size: 1.5rem; margin-right: 20px; transition: 0.3s; text-decoration: none; }
-        .social-link:hover { opacity: 1; color: var(--accent); }
-        /* --- MOBILE RESPONSIVE OVERRIDES --- */
-@media (max-width: 991px) {
-    /* 1. Navbar Toggler Style */
-    .navbar-toggler { border: none !important; padding: 0; }
-    .navbar-toggler:focus { box-shadow: none; }
-    .navbar-toggler-icon {
-        filter: invert(78%) sepia(13%) saturate(651%) hue-rotate(314deg) brightness(93%) contrast(85%);
+        .side-item {
+            margin-bottom: 0 !important;
+            padding: 10px !important;
+            flex-direction: column;
+            font-size: 0.6rem !important; /* Tiny text below icons */
+        }
+
+        .side-item i { margin-right: 0 !important; font-size: 1.4rem !important; margin-bottom: 4px; }
+        .side-item span { display: block; } /* Show short labels like 'Live' */
+
+        /* Ensure the Exit button stays in the same row */
+        .sidebar .mt-auto { margin-top: 0 !important; }
+
+        /* 3. Main Workspace Padding */
+        .main-workspace {
+            margin-left: 0 !important;
+            width: 100% !important;
+            padding: 80px 20px 100px 20px !important; /* Space for the bottom dock */
+        }
+
+        .hero h1 { font-size: 3.5rem !important; }
     }
+        </style>
+    </head>
+    <body>
 
-    /* 2. Sidebar to Horizontal Dock */
-    .sidebar {
-        width: 100% !important;
-        height: 75px !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        top: auto !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        border-right: none !important;
-        border-top: 1px solid var(--border) !important;
-        background: rgba(10, 10, 10, 0.98) !important;
-        backdrop-filter: blur(15px);
-        padding: 0 10px !important;
-        z-index: 2500;
-    }
+        <!-- PERSISTENT NAV -->
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-sb fixed-top">
+        <div class="container">
+            <a class="navbar-brand" onclick="globalNav()">SAFEBEAT</a>
+            
+            <!-- THE TOGGLER BUTTON (Make sure this exists) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    /* Hide the 'Terminal' text label on mobile */
-    .sidebar .label-accent { display: none; }
-
-    /* Icons side-by-side */
-    .sidebar nav {
-        display: flex !important;
-        flex-direction: row !important;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .side-item {
-        margin-bottom: 0 !important;
-        padding: 10px !important;
-        flex-direction: column;
-        font-size: 0.6rem !important; /* Tiny text below icons */
-    }
-
-    .side-item i { margin-right: 0 !important; font-size: 1.4rem !important; margin-bottom: 4px; }
-    .side-item span { display: block; } /* Show short labels like 'Live' */
-
-    /* Ensure the Exit button stays in the same row */
-    .sidebar .mt-auto { margin-top: 0 !important; }
-
-    /* 3. Main Workspace Padding */
-    .main-workspace {
-        margin-left: 0 !important;
-        width: 100% !important;
-        padding: 80px 20px 100px 20px !important; /* Space for the bottom dock */
-    }
-
-    .hero h1 { font-size: 3.5rem !important; }
-}
-    </style>
-</head>
-<body>
-
-    <!-- PERSISTENT NAV -->
-<!-- NAV -->
-<nav class="navbar navbar-expand-lg navbar-sb fixed-top">
-    <div class="container">
-        <a class="navbar-brand" onclick="globalNav()">SAFEBEAT</a>
-        
-        <!-- THE TOGGLER BUTTON (Make sure this exists) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mobileMenu">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('overview')">Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('problem')">Problem</a></li>
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('solution')">Solution</a></li>
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('features')">Features</a></li>
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('process')">Process</a></li>
-                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('lab')">About</a></li>
-                <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
-                    <button class="btn btn-sb-primary" onclick="launchConsole()">TRY IT NOW</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-    <!-- 1. LANDING VIEW -->
-    <div id="landing-view">
-        <section class="hero">
-            <div class="container">
-                <span class="label-accent" data-aos="fade-down">Innovative Safety Systems</span>
-                <h1 data-aos="zoom-in" data-aos-duration="1000">SafeBeat.</h1>
-                <p class="text-white-50 w-50 mx-auto fs-5 mb-5">cardiac safety systems engineered for the modern athlete.</p>
-                <button class="btn-sb-primary" onclick="launchConsole()">LAUNCH CONSOLE</button>
-            </div>
-        </section>
-
-
-<!-- PART 1: OVERVIEW -->
-<section id="overview" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="row align-items-center g-5">
-        <div class="col-lg-6" data-aos="fade-right">
-            <span class="label-accent">System Overview</span>
-            <h2 class="display-5 fw-bold mb-4">A Professional Performance Suite.</h2>
-            <p class="text-white-50 lead">SafeBeat is a high-fidelity cardiac monitoring ecosystem designed to provide real-time electrical heart data. Unlike standard monitors, SafeBeat captures the full ECG waveform, providing a clinical-grade window into an athlete's cardiovascular health.</p>
-        </div>
-        <div class="col-lg-6" data-aos="fade-left">
-            <div class="elite-card" style="background: linear-gradient(45deg, #111, #050505);">
-                <i class="bi bi-display text-accent fs-1 mb-3 d-block"></i>
-                <h4 class="fw-bold">Cross-Platform Sync</h4>
-                <p class="text-white-50 small">Seamless data flow between the wearable hardware, mobile application, and this professional web command center.</p>
+            <div class="collapse navbar-collapse" id="mobileMenu">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('overview')">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('problem')">Problem</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('solution')">Solution</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('features')">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('process')">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="globalNav('lab')">About</a></li>
+                    <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
+                        <button class="btn btn-sb-primary" onclick="launchConsole()">TRY IT NOW</button>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<!-- PART 2: PROBLEM -->
-<section id="problem" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="row g-5">
-        <div class="col-lg-5" data-aos="fade-right">
-            <span class="label-accent">The Crisis</span>
-            <h2 class="display-4 fw-bold">Silence is the Danger.</h2>
-        </div>
-        <div class="col-lg-7" data-aos="fade-left">
-            <p class="lead text-white-50">Sudden Cardiac Arrest (SCA) often strikes without warning. Standard fitness trackers fail to detect the underlying electrical irregularities that precede a crisis. SafeBeat addresses this by analyzing the P-QRS-T complex in real-time, identifying risks before they manifest physically.</p>
-            <div class="row mt-5">
-                <div class="col-6">
-                    <h1 class="fw-black text-accent mb-0">1/40k</h1>
-                    <p class="small text-white-25">Annual SCA Risk in Athletes</p>
+        <!-- 1. LANDING VIEW -->
+        <div id="landing-view">
+            <section class="hero">
+                <div class="container">
+                    <span class="label-accent" data-aos="fade-down">Innovative Safety Systems</span>
+                    <h1 data-aos="zoom-in" data-aos-duration="1000">SafeBeat.</h1>
+                    <p class="text-white-50 w-50 mx-auto fs-5 mb-5">cardiac safety systems engineered for the modern athlete.</p>
+                    <button class="btn-sb-primary" onclick="launchConsole()">LAUNCH CONSOLE</button>
                 </div>
-                <div class="col-6">
-                    <h1 class="fw-black text-accent mb-0">0.2ms</h1>
-                    <p class="small text-white-25">Signal Processing Latency</p>
+            </section>
+
+
+    <!-- PART 1: OVERVIEW -->
+    <section id="overview" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="label-accent">System Overview</span>
+                <h2 class="display-5 fw-bold mb-4">Intelligent Cardiovascular Monitoring for Athletes.</h2>
+                <p class="text-white-50 lead">
+                    SafeBeat is a smart wearable monitoring system engineered to track real-time cardiovascular signals during physical activity. 
+                    Powered by embedded sensors and an ESP32 processing unit, the system continuously analyzes heart rate patterns and blood oxygen levels to detect early warning signs of cardiac stress. 
+                    Designed for athletes, SafeBeat transforms raw biometric data into actionable insights helping prevent risk before it becomes danger.
+                </p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="elite-card" style="background: linear-gradient(45deg, #111, #050505);">
+                    <i class="bi bi-display text-accent fs-1 mb-3 d-block"></i>
+                    <h4 class="fw-bold">Unified Monitoring Ecosystem</h4>
+                    <p class="text-white-50 small">
+                        Secure, real-time synchronization between the wearable vest, mobile interface, and web dashboard. 
+                        Coaches and users can visualize live metrics, review historical data, and monitor performance from anywhere.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- PART 3: SOLUTION (The Prototype) -->
-<section id="solution" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="row align-items-center g-5">
-        <div class="col-lg-6 order-lg-2" data-aos="fade-left">
-            <span class="label-accent">The Prototype</span>
-            <h2 class="display-5 fw-bold mb-4">Invisible Engineering.</h2>
-            <p class="text-white-50">Our solution integrates the AD8232 heart monitor frontend with dual-core ESP32 processing nodes. This hardware is housed in an impact-resistant, lightweight module designed to clip onto high-performance compression apparel.</p>
-            <p class="text-white-25 small mt-4">By utilizing dry-contact electrodes, the system maintains a stable signal even during high-intensity explosive movements.</p>
-        </div>
-        <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-            <div class="img-placeholder">
-                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80" class="w-100 h-100" style="object-fit: cover; opacity: 0.5;">
+    <!-- PART 2: PROBLEM -->
+    <section id="problem" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="row g-5">
+            <div class="col-lg-5" data-aos="fade-right">
+                <span class="label-accent">The Problem</span>
+                <h2 class="display-4 fw-bold">The Most Dangerous Threat Is the One You Don’t See.</h2>
             </div>
-        </div>
-    </div>
-</section>
+            <div class="col-lg-7" data-aos="fade-left">
+                <p class="lead text-white-50">
+                    Sudden cardiac events in young athletes are rare ,but when they occur, they are often unexpected. 
+                    Most consumer fitness trackers measure surface-level metrics like heart rate, but they do not analyze deeper cardiovascular patterns or detect abnormal rhythm variations during intense physical stress. 
+                    Without continuous signal monitoring, early warning signs can remain unnoticed.
+                    SafeBeat was created to bridge that gap providing intelligent, real-time analysis of heart rhythm patterns and oxygen saturation during performance.
+                </p>
 
-<!-- PART 4: FEATURES -->
-<section id="features" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="text-center mb-5">
-        <span class="label-accent">Technical Capabilities</span>
-        <h2 class="display-6 fw-bold">System Intelligence Loop</h2>
-    </div>
-    <div class="row g-4">
-        <div class="col-md-3" data-aos="zoom-in">
-            <div class="elite-card text-center py-5">
-                <i class="bi bi-activity text-accent fs-1"></i>
-                <h6 class="mt-3 fw-bold">ECG Capture</h6>
-                <p class="small text-white-50">12-bit precision waveform extraction.</p>
-            </div>
-        </div>
-        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
-            <div class="elite-card text-center py-5">
-                <i class="bi bi-cpu text-accent fs-1"></i>
-                <h6 class="mt-3 fw-bold">Live Filtering</h6>
-                <p class="small text-white-50">Digital noise reduction algorithms.</p>
-            </div>
-        </div>
-        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
-            <div class="elite-card text-center py-5">
-                <i class="bi bi-cloud-check text-accent fs-1"></i>
-                <h6 class="mt-3 fw-bold">Cloud Sync</h6>
-                <p class="small text-white-50">Global Realtime DB telemetry.</p>
-            </div>
-        </div>
-        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
-            <div class="elite-card text-center py-5">
-                <i class="bi bi-graph-up-arrow text-accent fs-1"></i>
-                <h6 class="mt-3 fw-bold">Predictive AI</h6>
-                <p class="small text-white-50">Arrhythmia pattern recognition.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PART 5: PROCESS -->
-<section id="process" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="row g-5">
-        <div class="col-lg-4" data-aos="fade-right">
-            <span class="label-accent">Development</span>
-            <h2 class="display-5 fw-bold">The STEM Journey.</h2>
-            <p class="text-white-50 mt-4">The evolution of SafeBeat through Science, Technology, Engineering, and Mathematics.</p>
-        </div>
-        <div class="col-lg-8">
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-up">
-                    <div class="elite-card">
-                        <h6 class="text-accent fw-bold">PHASE 01</h6>
-                        <p class="small text-white-50">Hardware integration of AD8232 and ESP32 with custom power management.</p>
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <h1 class="fw-black text-accent mb-0">High-Intensity Risk</h1>
+                        <p class="small text-white-25">
+                            Intense physical exertion increases cardiovascular strain, especially in undiagnosed conditions.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="elite-card">
-                        <h6 class="text-accent fw-bold">PHASE 02</h6>
-                        <p class="small text-white-50">Establishing secure, low-latency WebSocket communication with Firebase nodes.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="elite-card">
-                        <h6 class="text-accent fw-bold">PHASE 03</h6>
-                        <h5 class="fw-bold fs-6">Precision Calibration</h5>
-                        <p class="small text-white-50">Implementing Karvonen formulae for personalized health thresholds.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="elite-card">
-                        <h6 class="text-accent fw-bold">PHASE 04</h6>
-                        <h5 class="fw-bold fs-6">Future Roadmap</h5>
-                        <p class="small text-white-50">Deployment of on-device neural networks for offline analysis.</p>
+                    <div class="col-6">
+                        <h1 class="fw-black text-accent mb-0">Real-Time Monitoring</h1>
+                        <p class="small text-white-25">
+                            Continuous signal analysis enables early detection of abnormal rhythm patterns during activity.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- PART 6: ABOUT (The Lab) -->
-<section id="lab" class="container section-padding border-top border-secondary border-opacity-10">
-    <div class="text-center mb-5">
-        <span class="label-accent">Innovation Lab</span>
-        <h2 class="display-6 fw-bold">Behind the Code</h2>
-    </div>
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-4" data-aos="fade-up">
-            <div class="elite-card text-center">
-                <h5 class="fw-bold">Amine</h5>
-                <p class="text-accent small">Lead Systems Engineer</p>
+    </section>
+    <!-- PART 3: SOLUTION (The Prototype) -->
+    <section id="solution" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                <span class="label-accent">The Prototype</span>
+                <h2 class="display-5 fw-bold mb-4">Engineered for Safety and Performance.</h2>
+                <p class="text-white-50">
+                    SafeBeat integrates medical monitoring sensors with a ESP32 microcontroller 
+                    to acquire and process cardiovascular signals in real time. The system captures electrical heart activity 
+                    while simultaneously monitoring oxygen saturation levels, enabling continuous analysis during physical exertion.
+                </p>
+                <p class="text-white-25 small mt-4">
+                    All hardware components are embedded inside a lightweight, impact-resistant module designed 
+                    to attach seamlessly to compression apparel. Using optimized dry-contact electrodes and 
+                    signal filtering algorithms, the prototype maintains stable readings even during high-intensity movement.
+                </p>
             </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="elite-card text-center">
-                <h5 class="fw-bold">Youssef</h5>
-                <p class="text-accent small">Lead Cloud Architect</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-
-
-        <footer>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold text-white mb-4">SAFEBEAT</h5>
-                        <p class="text-white-50 small w-75">Advanced cardiac monitoring systems developed by students.</p>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <p class="label-accent">Connect</p>
-                        <a href="mailto:amine6ouragini@gmail.com" class="social-link"><i class="bi bi-envelope"></i></a>
-                        <a href="https://instagram.com" class="social-link"><i class="bi bi-instagram"></i></a>
-                        <a href="https://linkedin.com" class="social-link"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="mt-5 text-center pt-4 border-top border-secondary opacity-25">
-                    <span class="small">© 2024-25 SAFEBEAT. ALL RIGHTS RESERVED.</span>
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <div class="img-placeholder">
+                    <img src="gpexe.jpg" class="w-100 h-100" style="object-fit: cover; opacity: 0.5;">
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <!-- 2. WORKSPACE CONSOLE -->
+    <!-- PART 4: FEATURES -->
+    <section id="features" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="text-center mb-5">
+            <span class="label-accent">Features</span>
+            <h2 class="display-6 fw-bold">Some Of Safebeat's Features include</h2>
+        </div>
+        <div class="row g-4">
+
+            <div class="col-md-3" data-aos="zoom-in">
+                <div class="elite-card text-center py-5">
+                    <i class="bi bi-activity text-accent fs-1"></i>
+                    <h6 class="mt-3 fw-bold">ECG capture</h6>
+                    <p class="small text-white-50">
+                        Continuous heart rhythm monitoring to capture real-time electrical activity during training and competition.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                <div class="elite-card text-center py-5">
+                    <i class="bi bi-phone text-accent fs-1"></i>
+                    <h6 class="mt-3 fw-bold">Live Monitoring App</h6>
+                    <p class="small text-white-50">
+                        Instant data visualization with live heart metrics, oxygen levels, and smart alert notifications.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                <div class="elite-card text-center py-5">
+                    <i class="bi bi-speedometer2 text-accent fs-1"></i>
+                    <h6 class="mt-3 fw-bold">Performance Diagnostics</h6>
+                    <p class="small text-white-50">
+                        Evaluates theroratical max performance possible and compares it with recorded performance
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                <div class="elite-card text-center py-5">
+                    <i class="bi bi-cpu text-accent fs-1"></i>
+                    <h6 class="mt-3 fw-bold">AI Analysis Model</h6>
+                    <p class="small text-white-50">
+                        Machine learning algorithms analyze rhythm patterns to detect anomalies and potential risks early.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PART 5: PROCESS -->
+    <section id="process" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="row g-5">
+            <div class="col-lg-4" data-aos="fade-right">
+                <span class="label-accent">Development</span>
+                <h2 class="display-5 fw-bold">The Journey.</h2>
+                <p class="text-white-50 mt-4">
+                    The competitive and scientific journey of SafeBeat through international innovation platforms.
+                </p>
+            </div>
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="elite-card">
+                            <h6 class="text-accent fw-bold">01- I-FEST² 2025</h6>
+                            <p class="small text-white-50">
+                                Selected and presented at I-FEST² 2025, showcasing the initial prototype and core cardiovascular monitoring concept.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="elite-card">
+                            <h6 class="text-accent fw-bold">02- Genius Olympiad 2025</h6>
+                            <p class="small text-white-50">
+                                Represented at Genius Olympiad 2025, demonstrating the integration of a Live monitoring App, performance evaluation features and intelligent analysis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="elite-card">
+                            <h6 class="text-accent fw-bold">03- TISF 2026</h6>
+                            <p class="small text-white-50">
+                                Advanced development stage presented at TISF 2026, focusing on a new prototype and evolving The AI analysis system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="elite-card">
+                            <h6 class="text-accent fw-bold">04- I-Fest² 2026</h6>
+                            <p class="small text-white-50">
+                                Upcoming participation in i-FEST² 2026, full costum made prototype, web integration,and redesigning the App continuing the evolution of SafeBeat toward a fully optimized intelligent monitoring system.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PART 6: ABOUT (The Lab) -->
+    <section id="lab" class="container section-padding border-top border-secondary border-opacity-10">
+        <div class="text-center mb-5">
+            <span class="label-accent">Innovation Lab</span>
+            <h2 class="display-6 fw-bold">Behind the Code</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="elite-card text-center">
+                    <h5 class="fw-bold">Amine</h5>
+                    <p class="text-accent small">CO-founder</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="elite-card text-center">
+                    <h5 class="fw-bold">Youssef</h5>
+                    <p class="text-accent small">CO-founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+
+    <footer>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <!-- Left Side: Branding -->
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <h5 class="fw-bold text-white mb-4">SAFEBEAT</h5>
+                            <p class="text-white-50 small w-75">Advanced cardiac monitoring systems developed by students.</p>
+                        </div>
+
+                        <!-- Right Side: Two-Person Contacts -->
+                        <div class="col-md-7 text-md-end">
+                            <p class="label-accent mb-3">Contact us!</p>
+                            
+                            <!-- Amine -->
+                            <div class="mb-3">
+                                <a href="mailto:amine6ouragini@gmail.com" class="social-link"><i class="bi bi-envelope"></i></a>
+                                <a href="https://www.instagram.com/amineouragini__/" class="social-link"><i class="bi bi-instagram"></i></a>
+                                <a href="#https://www.facebook.com/amine.ouragini" class="social-link"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            </div>
+
+                            <!-- Youssef -->
+                            <div>
+                                <span class="label-accent mb-3">Or These</span>
+                                <a href="mailto:youssefbrahim445@gmail.com" class="social-link"><i class="bi bi-envelope"></i></a>
+                                <a href="#https://www.instagram.com/yousssef__brahim/" class="social-link"><i class="bi bi-instagram"></i></a>
+                                <a href="#https://www.facebook.com/youssef.brahim.63205" class="social-link"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Copyright -->
+                    <div class="mt-5 text-center pt-4 border-top border-secondary opacity-25">
+                        <span class="small">2025-26 SAFEBEAT.</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- 2. WORKSPACE CONSOLE -->
     <div id="sb-console">
         <aside class="sidebar d-flex flex-column">
             <span class="label-accent mb-5 px-3" style="font-size: 0.6rem;">Monitoring Center v2.0</span>
@@ -470,7 +536,8 @@
         </main>
     </div>
 
-    <!-- SCRIPTS -->
+
+            <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
@@ -605,5 +672,4 @@ window.globalNav = (targetId) => {
         AOS.init();
     </script>
 </body>
-
-</html>
+</html> 
